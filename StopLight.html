@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.13.12/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/jsx">
+
+      const App = () => {
+
+      const lightStyles = {
+          borderRadius: '100px',
+          width: '60px',
+          height: '60px',
+          marginBottom: '10px',
+          cursor: 'pointer'
+      };
+
+      const styles = {
+        pole: {
+          backgroundColor: 'black',
+          width: '20px',
+          height: '50px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          margin: 'auto',
+        },
+        container: {
+          backgroundColor: 'black',
+          width: '100px',
+          height: '200px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          margin: 'auto',
+          padding: '10px'
+        },
+        redLight: {
+          ...lightStyles,
+          backgroundColor: 'red',
+        },
+        yellowLight: {
+          ...lightStyles,
+          backgroundColor: 'yellow',
+        },
+        greenLight: {
+          ...lightStyles,
+          backgroundColor: 'green',
+          marginBottom: 0
+        },
+        enabledLight: {
+          border: '2px solid yellow'
+        }
+      }
+
+        const [selected, setSelected] = React.useState('red');
+
+
+        return (
+          <main>
+            <div style={styles.pole}/>
+            <div style={styles.container}>
+              <div id='redLight'onClick={() => setSelected('red')} style={selected === 'red' ? {...styles.redLight, ...styles.enabledLight} : styles.redLight}/>
+              <div id='yellowLight'onClick={() => setSelected('yellow')} style={selected === 'yellow' ? {...styles.yellowLight, ...styles.enabledLight} : styles.yellowLight}/>
+              <div id='greenLight'onClick={() => setSelected('green')} style={selected === 'green' ? {...styles.greenLight, ...styles.enabledLight} : styles.greenLight}/>
+            </div>
+          </main>
+        )
+      }
+
+        ReactDOM.render(
+          <App/>,
+          document.getElementById('root')
+        );
+    </script>
+  </body>
+</html>
